@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.chanvee.domain">
+	<class  name="Records" table="records">
+	<cache usage="read-write"/>
+	<!-- 主键策略 -->
+	<id name="id" type="java.lang.Integer">
+	<generator class="native"/>  
+	</id>
+	<property name="username" type="java.lang.String">
+	<column name="username" length="64" />
+	</property>
+	<property name="ISBN" type="java.lang.String">
+	<column name="ISBN" length="32"/>
+	</property>
+	<property name="bookname" type="java.lang.String">
+	<column name="bookname" length="32"/>
+	</property>
+	<property name="author" type="java.lang.String">
+	<column name="author" length="64" />
+	</property>
+	<property name="publisher" type="java.lang.String">
+	<column name="publisher" length="64" />
+	</property>
+	<property name="borrow_date" type="java.util.Date">
+	<column name="borrow_date"/>
+	</property>
+	<property name="back_date" type="java.util.Date">
+	<column name="back_date"/>
+	</property>
+	</class>
+</hibernate-mapping>

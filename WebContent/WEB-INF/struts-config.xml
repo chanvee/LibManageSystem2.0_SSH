@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+
+	<form-beans>
+	<form-bean name="userForm" type="com.chanvee.web.forms.UserForm" />
+	<form-bean name="bookForm" type="com.chanvee.web.forms.BookForm" />
+	</form-beans>
+	
+	<!-- 配置loginaction -->
+	<action-mappings>
+	<action path="/login" parameter="flag" name="userForm">
+	<forward name="admindashbord" path="/WEB-INF/main.jsp"/>
+	<forward name="normaluserdashbord" path="/WEB-INF/normaluserdashboard.jsp"/>
+	<forward name="libadmindashboard" path="/WEB-INF/libadmindashboard.jsp"/>
+	<forward name="login" path="/WEB-INF/login.html"/>	
+	</action>
+	<!-- 配置useraction -->
+	<action path="/user" name="userForm" parameter="flag">
+	<forward name="usermanage" path="/WEB-INF/usermanage1.jsp"/>
+	<forward name="showUserInfo" path="/WEB-INF/showUserInfo.jsp"/>
+	<forward name="usersetting" path="/WEB-INF/usersetting.jsp"/>
+	<forward name="libadminusersetting" path="/WEB-INF/libadminusersetting.jsp"/>
+	</action>
+	<!-- 配置管理界面跳转的action -->
+	<action path="/manage" name="userForm" parameter="flag">
+	<forward name="dashboard" path="/WEB-INF/main.jsp" />
+	<forward name="usermanage" path="/WEB-INF/usermanage1.jsp"/>
+	<forward name="bookmanage" path="/WEB-INF/bookmanage.jsp"/>
+	<forward name="borrowmanage" path="/WEB-INF/borrowmanage.jsp"/>
+	</action>
+	<!-- 配置bookaction -->
+	<action path="/book" name="bookForm" parameter="flag">
+	<forward name="bookmanage" path="/WEB-INF/bookmanage.jsp"/>
+	<forward name="libadminbookmanage" path="/WEB-INF/libadminbookmanage.jsp"/>
+	<forward name="showBookInfo" path="/WEB-INF/showBookInfo.jsp"/>
+	<forward name="showBookInfo1" path="/WEB-INF/showBookInfo1.jsp"/>
+	<forward name="libadminshowBookInfo" path="/WEB-INF/libadminshowBookInfo.jsp"/>
+	<forward name="libadminshowBookInfo1" path="/WEB-INF/libadminshowBookInfo1.jsp"/>
+	</action>
+	<!-- 配置normaluseraction -->
+	<action path="/normaluser" name="bookForm" parameter="flag">
+	<forward name="normaluserdashbord" path="/WEB-INF/normaluserdashboard.jsp"/>
+	<forward name="borrowbook" path="/WEB-INF/borrowbook.jsp"/>
+	<forward name="usersetting" path="/WEB-INF/usersetting.jsp"/>
+	<forward name="libadminusersetting" path="/WEB-INF/libadminusersetting.jsp"/>
+	<forward name="showBorrowBookInfo" path="/WEB-INF/showBorrowBookInfo.jsp"/>
+	</action>
+	<!-- 配置libadminaction -->
+	<action path="/libadmin" name="userForm" parameter="flag">
+	<forward name="libadmindashboard" path="/WEB-INF/libadmindashboard.jsp"/>
+	<forward name="backbook" path="/WEB-INF/backbook.jsp"/>
+	<forward name="libadminbookmanage" path="/WEB-INF/libadminbookmanage.jsp"/>
+	<forward name="libadminusersetting" path="/WEB-INF/libadminusersetting.jsp"/>
+	<forward name="libadminshowBookInfo" path="/WEB-INF/libadminshowBookInfo.jsp"/>
+	<forward name="libadminshowBorrowBookInfo" path="/WEB-INF/libadminshowBorrowBookInfo.jsp"/>
+	</action>
+	</action-mappings>
+	
+	<!-- 配置全局跳转 -->
+	<global-forwards>
+	<forward name="opererr" path="/WEB-INF/err.jsp" />
+	<forward name="operok" path="/WEB-INF/ok.jsp" />
+	</global-forwards>
+	
+	<!-- 配置代理请求处理 DelegatingRequestProcessor -->
+	<controller>
+ 	<set-property property="processorClass" value="org.springframework.web.struts.DelegatingRequestProcessor"/>
+	</controller> 
+	
+</struts-config>
